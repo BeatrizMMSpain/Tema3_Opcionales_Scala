@@ -1,58 +1,49 @@
 object Ejercicio2 extends App {
 
+
   class NumerosModulo {
 
-    object Main {
-      def main(args: Array[String]): Unit = {
-        imprimeModulo(1000)
+    /**
+      *   Función que calcula si un número es divisible por 100. Devolverá True si lo es.
+      *
+      * @param x : Int Número a analizar
+      * @return Boolean
+      */
+    def modulo100(x: Int): Boolean = {
+     x % 100 == 0
+    }
+
+    /**
+      *   Función que calcula si un número es divisible por 200. Devolverá True si lo es.
+      *
+      * @param x : Int Número a analizar
+      * @return Boolean
+      */
+    def modulo200(x: Int): Boolean = {
+      x % 200 == 0
+    }
+
+    /**
+      *   Clase que imprime un número si imprime la condición de la función que se le pasa.
+      * @param f
+      * @param end
+      */
+    def imprimeModulo(f : Int => Boolean, end: Int) {
+      for (x <- 1 to end ){
+        if ( f(x)){
+          println(x)
+        }
       }
     }
   }
 
-    def imprimeModulo(end: Int) {
-      modulo100(end)
-      modulo200(end)
-      /*
-      val control1 = false
-      control1 == modulo100(end)
-      if (control1 == true) {
-        val control2 = modulo200(end)
-      } else {
-        println("No puedo.")
-      }
-       */
-
-
-      def modulo100(x: Int): Boolean = {
-        var y = 1
-
-        while (y <= x) {
-          if (y % 100 != 0) {
-            y = y + 1
-          } else {
-            println(y)
-            y = y + 1
-          }
-        }
-        true
-      }
-
-      def modulo200(x: Int): Boolean = {
-        var y = 1
-
-        while (y < x + 1) {
-          if (y % 200 != 0) {
-            y = y + 1
-          } else {
-            println(y)
-            y = y + 1
-          }
-        }
-        true
-      }
-    }
   override def main(args: Array[String]): Unit = {
-    val algo = new NumerosModulo
+
+    val numMod = new NumerosModulo
+    println("Números divisibles por 100")
+    numMod.imprimeModulo(numMod.modulo100,1000)
+    println("Números divisibles por 200")
+    numMod.imprimeModulo(numMod.modulo200,1000)
   }
 }
 
